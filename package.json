@@ -1,0 +1,30 @@
+{
+  "name": "metric-imperial-converter",
+  "version": "0.0.1",
+  "description": "FCC project",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.16.4",
+    "cors": "^2.8.5",
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "mocha": "^6.1.4",
+    "helmet": "^3.16.0"
+  },
+  "engines": {
+    "node": "4.4.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/orvalho/FCC-Metric-Imperial-Converter"
+  },
+  "keywords": [
+    "node",
+    "converter",
+    "express"
+  ],
+  "license": "MIT"
+}

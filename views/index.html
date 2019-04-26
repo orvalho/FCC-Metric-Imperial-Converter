@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Metric/Imp Converter</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Handlee" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="./public/style.css">
+  </head>
+  <body>
+    <div id="container">
+      <h1>Metric/Imp Converter</h1>
+      
+      <div class="wrapper">
+        <h2>Description</h2>
+        <p>If you need to convert from Imperial to Metric, or the other way around, you are at the right place!</p>
+        <p>You can convert:</p>
+        <ul>
+          <li><span>gal &lt;—&gt; l</span></li>
+          <li><span>lbs &lt;—&gt; kg</span></li>
+          <li><span>mi &lt;—&gt; km</span></li>
+        </ul>
+      </div>
+      
+      <div class="wrapper">     
+        <h2>Example Usage</h2>
+        <a href="https://assorted-crest.glitch.me/api/convert?input=4gal" target="_blank"><span>/api/convert?input=4gal</span></a>
+        <a href="https://assorted-crest.glitch.me/api/convert?input=1/2km" target="_blank"><span>/api/convert?input=1/2km</span></a>
+        <a href="https://assorted-crest.glitch.me/api/convert?input=5.4/3lbs" target="_blank"><span>/api/convert?input=5.4/3lbs</span></a>
+        <a href="https://assorted-crest.glitch.me/api/convert?input=kg" target="_blank"><span>/api/convert?input=kg</span></a>
+      </div>
+      
+      <div class="wrapper">
+        <h2>Example Output</h2>
+        <span>{initNum: 3.1,<br>
+               initUnit: 'mi',<br>
+               returnNum: 4.98895,<br>
+               returnUnit: 'km',<br>
+               string: '3.1 miles converts to 4.98895 kilometers'}</span>
+      </div>
+      
+      <div class="wrapper">
+        <h2>Converter</h2>
+        <form id="convertForm">
+          <input type="text" id="convertField" name="input" placeholder="3.1mi">
+          <input id="convert" type="submit" value="Convert!">
+        </form>
+        <p id="result"></p>
+        <span id="jsonResult"></span>
+      </div>
+    
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-2.2.1.min.js" integrity="sha256-gvQgAFzTH6trSrAWoH1iPo9Xc96QxSZ3feW6kem+O00=" crossorigin="anonymous"></script>
+  
+    <script>
+      $(function() {
+        $('#convertForm').submit(function() {
+          event.preventDefault();
+          $.ajax({
+            url: '/api/convert',
+            type: 'get',
+            data: $('#convertForm').serialize(),
+            success: function(data) {
+              $('#result').text(data.string || data);
+              $('#jsonResult').text(JSON.stringify(data));
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
